@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			The encoding in the next tags is neccessary to avoid browser warnings
+		-->
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>simple angular.js demo</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+			the data-ng-app is critical in the next tag since no angular processing
+			will take place on the html section without it...
+		-->
+		<div data-ng-app="">
+			<p>Name : <input type="text" data-ng-model="name"></p>
+			<h1>Hello {{name}}</h1>
+		</div>
+
+	</body>
+</html>
