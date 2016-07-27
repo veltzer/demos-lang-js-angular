@@ -25,11 +25,20 @@
 		<link rel="stylesheet" href="header.css">
 	</head>
 	<body>
-		<div data-ng-app="MyApp" data-ng-cloak>
-			<md-toolbar md-scroll-shrink>
-				<div class="md-toolbar-tools">My Messages</div>
-			</md-toolbar>
-			<md-subheader class="md-primary">Unread Messages</md-subheader>
+		<div data-ng-app="MyApp" data-ng-cloak layout="column" layout-fill>
+			<header>
+				<md-toolbar class="md-toolbar" md-scroll-shrink>
+					<div class="md-toolbar-tools">My Messages</div>
+				</md-toolbar>
+			</header>
+			<main class="md-padding" flex>
+				<md-subheader class="md-primary">Unread Messages</md-subheader>
+			</main>
+			<footer>
+				<md-toolbar class="md-toolbar" md-scroll-shrink layout="row" layout-align="center center">
+					My Awesome Footer
+				</md-toolbar>
+			</footer>
 		</div>
 	</body>
 </html>
