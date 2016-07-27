@@ -21,6 +21,7 @@ import urllib.request # for urlretrieve
 tp='out/web/thirdparty'
 tools='tools'
 debug=False
+quiet=True
 packs=[
 	# nodejs and npm for installing javascript packages
 	'nodejs',
@@ -29,11 +30,18 @@ packs=[
 	'templar',
 ]
 
+#############
+# functions #
+#############
+def msg(m):
+	if not quiet:
+		print(msg)
+
 ########
 # code #
 ########
 for pack in packs:
-	print('getting ubuntu package for [{0}]'.format(pack))
+	msg('getting ubuntu package for [{0}]'.format(pack))
 	subprocess.check_call([
 		'sudo',
 		'apt-get',
@@ -42,7 +50,7 @@ for pack in packs:
 		pack
 	], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-print('installing node packages...')
+msg('installing node packages...')
 subprocess.check_call([
 	'npm',
 	'install',
