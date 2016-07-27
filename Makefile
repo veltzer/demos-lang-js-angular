@@ -40,9 +40,9 @@ $(TOOLS_STAMP): scripts/tools.py $(ALL_DEP)
 	$(Q)$<
 	$(Q)make_helper touch-mkdir $@
 
-$(HTML_STAMP): $(HTML_SRC) $(TOOLS_STAMP) $(ALL_DEP)
+$(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
 	$(info doing [$@])
-	$(Q)$(TIDY) -errors -q $(HTML_SRC)
+	$(Q)$(TIDY) -config support/tidy.conf $(HTML_SRC)
 	$(Q)node_modules/htmlhint/bin/htmlhint $(HTML_SRC) > /dev/null
 	$(Q)make_helper touch-mkdir $@
 

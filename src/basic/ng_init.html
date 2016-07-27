@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!--
+	This example shows how to use ng-init
+-->
 <html>
 	<head>
 		<!--
@@ -10,13 +13,8 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	</head>
 	<body>
-		<!--
-			the data-ng-app is critical in the next tag since no angular processing
-			will take place on the html section without it...
-		-->
-		<div data-ng-app="">
-			<p>Name : <input type="text" data-ng-model="name"></p>
-			<h1>Hello {{name}}</h1>
+		<div data-ng-app="" data-ng-init="firstName='John'">
+		<p>The name is <span data-ng-bind="firstName"/></p>
 		</div>
 	</body>
 </html>
