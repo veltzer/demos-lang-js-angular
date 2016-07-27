@@ -15,26 +15,25 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
 		<!-- angular material -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.js"></script>
 		<!-- our code -->
-		<script type="text/javascript" src="hello.js"></script>
-		<link rel="stylesheet" href="hello.css">
+		<script type="text/javascript" src="toolbar.js"></script>
+		<link rel="stylesheet" href="toolbar.css">
 	</head>
 	<body>
-		<!--
-		-->
-		<div data-ng-app="MyApp">
-			<md-content flex layout-padding>
-				<p>
-				the data-ng-app is critical in the next tag since no angular processing
-				will take place on the html section without it...
-				And you actually need a real app underneath since our app is derived from
-				'ngMaterial' and it will render everything underit differently.
-				</p>
-			</md-content>
+		<div data-ng-app="MyApp" data-ng-cloak>
+			<md-toolbar class="md-toolbar-tools">
+				<md-button class="md-button">
+					Button1
+				</md-button>
+				<md-button class="md-button">
+					Button2
+				</md-button>
+			</md-toolbar>
 		</div>
 	</body>
 </html>

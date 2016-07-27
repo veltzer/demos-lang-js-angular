@@ -20,36 +20,23 @@
 		<!-- angular material -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.js"></script>
+		<!-- our code -->
 		<script type="text/javascript" src="tabs.js"></script>
 		<link rel="stylesheet" href="tabs.css">
 	</head>
 	<body>
 		<div data-ng-app="MyApp" data-ng-controller="AppCtrl" data-ng-cloak>
-			<!--
-			<md-content class="md-primary">
-			-->
-				<md-tabs class="md-tabs" data-md-center-tabs>
-					<md-tab class="md-tab" id="tab1" data-md-active>
-						<md-tab-label>about me</md-tab-label>
-					</md-tab>
-					<md-tab class="md-tab" id="tab2">
-						<md-tab-label>github projects</md-tab-label>
-					</md-tab>
-					<md-tab class="md-tab" id="tab3">
-						<md-tab-label>donate</md-tab-label>
-					</md-tab>
-				</md-tabs>
-			<!--
-			</data-md-content>
-			-->
-			<md-toolbar class="md-toolbar-tools">
-				<md-button class="md-button">
-					Button1
-				</md-button>
-				<md-button class="md-button">
-					Button2
-				</md-button>
-			</md-toolbar>
+			<md-tabs class="md-tabs" data-md-center-tabs>
+				<md-tab class="md-tab" id="tab1" data-md-active>
+					<md-tab-label>about me</md-tab-label>
+				</md-tab>
+				<md-tab class="md-tab" id="tab2">
+					<md-tab-label>github projects</md-tab-label>
+				</md-tab>
+				<md-tab class="md-tab" id="tab3">
+					<md-tab-label>donate</md-tab-label>
+				</md-tab>
+			</md-tabs>
 		</div>
 	</body>
 </html>
