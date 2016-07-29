@@ -2,8 +2,22 @@
 <!--
 This example shows a header and footer layout
 
+Results:
+- with layout-fill, small list -> OK
+- with layout-fill, large list -> not ok (footer is ok in position but list continues).
+- the solution is the one with:
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.wrapper {
+  flex:1;
+}
+
 References:
 http://stackoverflow.com/questions/27090257/how-to-implement-the-classic-sticky-footer-with-angular-material
+https://gomasuga.com/blog/creating-a-sticky-footer-with-flexbox
 -->
 <html>
 	<head>
@@ -28,52 +42,60 @@ http://stackoverflow.com/questions/27090257/how-to-implement-the-classic-sticky-
 		<link rel="stylesheet" href="header.css">
 	</head>
 	<body>
-		<div data-ng-app="MyApp" data-ng-cloak layout="column">
+		<div data-ng-app="MyApp" data-ng-cloak layout="column" style="min-height: 100vh">
 			<header>
 				<md-toolbar class="md-toolbar" md-scroll-shrink>
 					<div class="md-toolbar-tools">My Messages</div>
 				</md-toolbar>
 			</header>
-			<main flex>
+			<main style="flex: 1">
 				<md-content>
-					<md-list flex>
+					<md-list>
 						<md-subheader class="md-sticky">Here are some of my projects at github</md-subheader>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project1</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project2</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project3</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project4</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project5</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project6</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<!--
+						<md-list-item class="md-1-line">
 							<h3>project7</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project8</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project9</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project10</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project11</h3>
 						</md-list-item>
-						<md-list-item class="md-1-line" ng-click="null">
+						<md-list-item class="md-1-line">
 							<h3>project12</h3>
 						</md-list-item>
+						<md-list-item class="md-1-line">
+							<h3>project13</h3>
+						</md-list-item>
+						<md-list-item class="md-1-line">
+							<h3>project14</h3>
+						</md-list-item>
+						-->
 					</md-list>
 				</md-content>
 			</main>
