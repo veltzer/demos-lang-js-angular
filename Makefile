@@ -35,9 +35,9 @@ debug:
 	$(info HTML_STAMP is $(HTML_STAMP))
 	$(info ALL is $(ALL))
 
-$(TOOLS_STAMP): scripts/tools.py $(ALL_DEP)
+$(TOOLS_STAMP): $(ALL_DEP)
 	$(info doing [$@])
-	$(Q)$<
+	$(Q)templar_cmd install_deps
 	$(Q)make_helper touch-mkdir $@
 
 $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
