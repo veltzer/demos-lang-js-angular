@@ -28,6 +28,7 @@ endif # DO_MKDBG
 #########
 .PHONY: all
 all: $(ALL) $(ALL_DEP)
+	@true
 
 .PHONY: debug
 debug:
