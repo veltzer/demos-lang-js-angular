@@ -6,3 +6,6 @@
 
 # tools
 /tools
+
+# python
+__pycache__
