@@ -43,7 +43,7 @@ $(TOOLS_STAMP): templardefs/deps.py package.json
 
 $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
 	$(info doing [$@])
-	$(Q)make_helper wrapper-silent node_modules/htmlhint/bin/htmlhint $(HTML_SRC)
+	$(Q)pymakehelper only_print_on_error node_modules/htmlhint/bin/htmlhint $(HTML_SRC)
 	$(Q)pymakehelper touch_mkdir $@
 #$(Q)$(TIDY) -config support/tidy.conf $(HTML_SRC)
 
