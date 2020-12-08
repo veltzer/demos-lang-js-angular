@@ -39,12 +39,12 @@ debug:
 $(TOOLS_STAMP): templardefs/deps.py package.json
 	$(info doing [$@])
 	$(Q)templar install_deps
-	$(Q)make_helper touch-mkdir $@
+	$(Q)pymakehelper touch_mkdir $@
 
 $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
 	$(info doing [$@])
 	$(Q)make_helper wrapper-silent node_modules/htmlhint/bin/htmlhint $(HTML_SRC)
-	$(Q)make_helper touch-mkdir $@
+	$(Q)pymakehelper touch_mkdir $@
 #$(Q)$(TIDY) -config support/tidy.conf $(HTML_SRC)
 
 .PHONY: clean
