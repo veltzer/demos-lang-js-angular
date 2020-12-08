@@ -50,4 +50,4 @@ $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
 .PHONY: clean
 clean:
 	$(info doing [$@])
-	$(Q)git clean -xdf > /dev/null
+	$(Q)git clean -qffxd
