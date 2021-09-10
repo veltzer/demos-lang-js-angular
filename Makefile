@@ -36,9 +36,8 @@ debug:
 	$(info HTML_STAMP is $(HTML_STAMP))
 	$(info ALL is $(ALL))
 
-$(TOOLS_STAMP): templardefs/deps.py package.json
+$(TOOLS_STAMP): config/deps.py package.json
 	$(info doing [$@])
-	$(Q)templar install_deps
 	$(Q)pymakehelper touch_mkdir $@
 
 $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
