@@ -1,7 +1,14 @@
 ##########
 # params #
 ##########
+# do you want dependency on the Makefile itself ?
+DO_ALLDEP:=1
+# do you want to see the commands?
 DO_MKDBG?=0
+
+########
+# code #
+########
 ALL:=
 OUT:=out
 HTML_SRC:=$(shell find src -name "*.html")
@@ -9,11 +16,6 @@ HTML_STAMP:=$(OUT)/html.stamp
 TIDY:=tools/tidy-html5/bin/tidy
 TOOLS_STAMP:=$(OUT)/tools.stamp
 ALL+=$(HTML_STAMP)
-ALL_DEP:=Makefile
-
-########
-# code #
-########
 
 ifeq ($(DO_MKDBG),1)
 Q=
@@ -23,11 +25,16 @@ Q=@
 #.SILENT:
 endif # DO_MKDBG
 
+# dependency on the makefile itself
+ifeq ($(DO_ALLDEP),1)
+.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
+endif
+
 #########
 # rules #
 #########
 .PHONY: all
-all: $(ALL) $(ALL_DEP)
+all: $(ALL)
 	@true
 
 .PHONY: debug
@@ -40,7 +47,7 @@ $(TOOLS_STAMP): config/deps.py package.json
 	$(info doing [$@])
 	$(Q)pymakehelper touch_mkdir $@
 
-$(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP) $(ALL_DEP)
+$(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP)
 	$(info doing [$@])
 	$(Q)pymakehelper only_print_on_error node_modules/htmlhint/bin/htmlhint $(HTML_SRC)
 	$(Q)pymakehelper touch_mkdir $@
