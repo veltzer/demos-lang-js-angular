@@ -5,6 +5,8 @@
 DO_ALLDEP:=1
 # do you want to see the commands?
 DO_MKDBG?=0
+# do you want to do tools?
+DO_TOOLS:=1
 
 ########
 # code #
@@ -14,7 +16,7 @@ OUT:=out
 HTML_SRC:=$(shell find src -name "*.html")
 HTML_STAMP:=$(OUT)/html.stamp
 TIDY:=tools/tidy-html5/bin/tidy
-TOOLS_STAMP:=$(OUT)/tools.stamp
+TOOLS:=$(OUT)/tools.stamp
 ALL+=$(HTML_STAMP)
 
 ifeq ($(DO_MKDBG),1)
@@ -28,7 +30,11 @@ endif # DO_MKDBG
 # dependency on the makefile itself
 ifeq ($(DO_ALLDEP),1)
 .EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
-endif
+endif # DO_ALLDEP
+
+ifeq ($(DO_TOOLS),1)
+.EXTRA_PREREQS+=$(TOOLS)
+endif # DO_TOOLS
 
 #########
 # rules #
@@ -37,15 +43,16 @@ endif
 all: $(ALL)
 	@true
 
+$(TOOLS): package.json
+	$(info doing [$@])
+	$(Q)npm install htmlhint
+	$(Q)pymakehelper touch_mkdir $@
+
 .PHONY: debug
 debug:
 	$(info HTML_SRC is $(HTML_SRC))
 	$(info HTML_STAMP is $(HTML_STAMP))
 	$(info ALL is $(ALL))
-
-$(TOOLS_STAMP): config/deps.py package.json
-	$(info doing [$@])
-	$(Q)pymakehelper touch_mkdir $@
 
 $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP)
 	$(info doing [$@])
@@ -55,5 +62,9 @@ $(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP)
 
 .PHONY: clean
 clean:
+	$(Q)rm -f $(ALL)
+
+.PHONY: clean_hard
+clean_hard:
 	$(info doing [$@])
 	$(Q)git clean -qffxd

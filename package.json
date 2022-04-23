@@ -6,8 +6,6 @@
   "directories": {
     "doc": "doc"
   },
-  "dependencies": {
-  },
   "devDependencies": {
     "htmlhint": "^0.9.13"
   },
