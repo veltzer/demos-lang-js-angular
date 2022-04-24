@@ -34,6 +34,7 @@ endif # DO_ALLDEP
 
 ifeq ($(DO_TOOLS),1)
 .EXTRA_PREREQS+=$(TOOLS)
+ALL+=$(TOOLS)
 endif # DO_TOOLS
 
 #########
