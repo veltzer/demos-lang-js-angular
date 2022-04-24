@@ -17,7 +17,6 @@ HTML_SRC:=$(shell find src -name "*.html")
 HTML_STAMP:=$(OUT)/html.stamp
 TIDY:=tools/tidy-html5/bin/tidy
 TOOLS:=$(OUT)/tools.stamp
-ALL+=$(HTML_STAMP)
 
 ifeq ($(DO_MKDBG),1)
 Q=
@@ -36,6 +35,8 @@ ifeq ($(DO_TOOLS),1)
 .EXTRA_PREREQS+=$(TOOLS)
 ALL+=$(TOOLS)
 endif # DO_TOOLS
+
+ALL+=$(HTML_STAMP)
 
 #########
 # rules #
