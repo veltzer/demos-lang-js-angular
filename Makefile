@@ -45,7 +45,7 @@ ALL+=$(HTML_STAMP)
 all: $(ALL)
 	@true
 
-$(TOOLS): package.json
+$(TOOLS): packags.txt config/deps.py package.json
 	$(info doing [$@])
 	$(Q)npm install htmlhint
 	$(Q)pymakehelper touch_mkdir $@
