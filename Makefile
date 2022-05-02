@@ -43,7 +43,7 @@ debug:
 	$(info HTML_STAMP is $(HTML_STAMP))
 	$(info ALL is $(ALL))
 
-$(HTML_STAMP): $(HTML_SRC) support/tidy.conf $(TOOLS_STAMP)
+$(HTML_STAMP): $(HTML_SRC) support/tidy.conf
 	$(info doing [$@])
 	$(Q)pymakehelper only_print_on_error node_modules/htmlhint/bin/htmlhint $(HTML_SRC)
 	$(Q)pymakehelper touch_mkdir $@
