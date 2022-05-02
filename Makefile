@@ -5,8 +5,6 @@
 DO_ALLDEP:=1
 # do you want to see the commands?
 DO_MKDBG?=0
-# do you want to do tools?
-DO_TOOLS:=1
 
 ########
 # code #
@@ -16,7 +14,6 @@ OUT:=out
 HTML_SRC:=$(shell find src -name "*.html")
 HTML_STAMP:=$(OUT)/html.stamp
 TIDY:=tools/tidy-html5/bin/tidy
-TOOLS:=$(OUT)/tools.stamp
 
 ifeq ($(DO_MKDBG),1)
 Q=
@@ -31,11 +28,6 @@ ifeq ($(DO_ALLDEP),1)
 .EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
 endif # DO_ALLDEP
 
-ifeq ($(DO_TOOLS),1)
-.EXTRA_PREREQS+=$(TOOLS)
-ALL+=$(TOOLS)
-endif # DO_TOOLS
-
 ALL+=$(HTML_STAMP)
 
 #########
@@ -44,11 +36,6 @@ ALL+=$(HTML_STAMP)
 .PHONY: all
 all: $(ALL)
 	@true
-
-$(TOOLS): packages.txt config/deps.py package.json
-	$(info doing [$@])
-	$(Q)npm install htmlhint
-	$(Q)pymakehelper touch_mkdir $@
 
 .PHONY: debug
 debug:
