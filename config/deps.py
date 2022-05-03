@@ -2,8 +2,6 @@ tools = [
     'tidy-html5',
 ]
 packages = [
-    # for jslint
-    'nodejs',
-    # for jslint
-    'npm',
+    'nodejs', # for tools
+    'npm', # for tools
 ]
