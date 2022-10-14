@@ -1,8 +1,8 @@
 packages = [
-    'tidy',
-    'nodejs',
-    'npm',
+    "tidy",
+    "nodejs",
+    "npm",
 ]
 tools = [
-    'tidy-html5',
+    "tidy-html5",
 ]
