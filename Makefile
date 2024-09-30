@@ -11,7 +11,7 @@ DO_MKDBG?=0
 ########
 ALL:=
 OUT:=out
-HTML_SRC:=$(shell find src -name "*.html")
+HTML_SRC:=$(shell find src -type f -and -name "*.html")
 HTML_STAMP:=$(OUT)/html.stamp
 TIDY:=tools/tidy-html5/bin/tidy
 
