@@ -1,10 +1,10 @@
 ##########
 # params #
 ##########
-# do you want dependency on the Makefile itself ?
-DO_ALLDEP:=1
 # do you want to see the commands?
 DO_MKDBG?=0
+# do you want dependency on the Makefile itself ?
+DO_ALLDEP:=1
 
 ########
 # code #
@@ -22,11 +22,6 @@ else # DO_MKDBG
 Q=@
 #.SILENT:
 endif # DO_MKDBG
-
-# dependency on the makefile itself
-ifeq ($(DO_ALLDEP),1)
-.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
-endif # DO_ALLDEP
 
 ALL+=$(HTML_STAMP)
 
@@ -57,3 +52,10 @@ clean:
 clean_hard:
 	$(info doing [$@])
 	$(Q)git clean -qffxd
+
+##########
+# alldep #
+##########
+ifeq ($(DO_ALLDEP),1)
+.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
+endif # DO_ALLDEP
