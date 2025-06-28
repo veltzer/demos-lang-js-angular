@@ -1,5 +1,3 @@
 # THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
-pyclassifiers
-pymakehelper
 pydmt
-pyclassifiers
+pymakehelper
