@@ -1,0 +1,13 @@
+# Repo-specific overlay. Deep-merged over the canonical rsconstruct.toml.
+
+# The repo's own support/tidy.conf (pydmt-era) declares the Angular Material
+# custom elements (md-toolbar, md-tabs, ...) as block-level tags and keeps
+# elements Angular fills at runtime. Without it tidy rejects the framework
+# markup wholesale.
+[processor.tidy]
+args = ["-config", "support/tidy.conf"]
+# These two use Angular Material's layout attributes (layout=, flex=), which
+# are framework markup tidy has no allowlist for. The pydmt-era Makefile had
+# tidy disabled for the whole repo (only htmlhint ran); everything except
+# these two files is now tidy-checked.
+src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
