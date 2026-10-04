@@ -4,10 +4,10 @@
 # src_dirs entries name directories; "." (the whole tree) is a config error
 reject_dot_src_dirs = true
 
-[processor.taplo]
+[processor.checker.taplo]
 src_files = [".rumdl.toml", "rsconstruct.toml"]
 
-[processor.tidy.main]
+[processor.checker.tidy.main]
 src_dirs = ["src"]
 args = ["-config", "support/tidy.conf"]
 src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
@@ -16,29 +16,29 @@ src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
 # are framework markup tidy has no allowlist for, so they get their own
 # instance with only the proprietary-attribute warning turned off; every
 # other tidy check still applies to them.
-[processor.tidy.material]
+[processor.checker.tidy.material]
 src_files = ["src/material/header.html", "src/material/toolbar.html"]
 args = ["-config", "support/tidy.conf", "--warn-proprietary-attributes", "no"]
 
 # lint the GitHub Actions workflow files with actionlint
-[processor.actionlint]
+[processor.checker.actionlint]
 src_dirs = [".github/workflows"]
 
 # ─── markdown ────────────────────────────────────────────────────────────────
 
-[processor.rumdl]
+[processor.checker.rumdl]
 src_files = ["README.md"]
 
 # ─── css ─────────────────────────────────────────────────────────────────────
 
 # Only .css is passed: biome.jsonc turns biome's JavaScript and JSON linters
 # off, oxlint covers JavaScript and ijsonlint covers JSON.
-[processor.biome]
+[processor.checker.biome]
 src_dirs = ["src/material"]
 src_extensions = [".css"]
 
 # ─── javascript ──────────────────────────────────────────────────────────────
 
-[processor.oxlint]
+[processor.checker.oxlint]
 src_dirs = ["src/material"]
 args = ["-c", ".oxlintrc.json"]
