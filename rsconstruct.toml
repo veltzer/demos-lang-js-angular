@@ -21,7 +21,7 @@ src_files = ["src/material/header.html", "src/material/toolbar.html"]
 args = ["-config", "support/tidy.conf", "--warn-proprietary-attributes", "no"]
 
 # lint the GitHub Actions workflow files with actionlint
-[processor.checker.actionlint]
+[processor.checker.iactionlint]
 src_dirs = [".github/workflows"]
 
 # ─── markdown ────────────────────────────────────────────────────────────────
