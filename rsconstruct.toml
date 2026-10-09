@@ -7,18 +7,21 @@ reject_dot_src_dirs = true
 [processor.checker.taplo]
 src_files = [".rumdl.toml", "rsconstruct.toml"]
 
-[processor.checker.tidy.main]
+[processor.checker.itidy.main]
 src_dirs = ["src"]
-args = ["-config", "support/tidy.conf"]
+config_file = "support/tidy.conf"
+dep_inputs = ["support/tidy.conf"]
 src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
 
 # These two use Angular Material's layout attributes (layout=, flex=), which
 # are framework markup tidy has no allowlist for, so they get their own
 # instance with only the proprietary-attribute warning turned off; every
 # other tidy check still applies to them.
-[processor.checker.tidy.material]
+[processor.checker.itidy.material]
 src_files = ["src/material/header.html", "src/material/toolbar.html"]
-args = ["-config", "support/tidy.conf", "--warn-proprietary-attributes", "no"]
+config_file = "support/tidy.conf"
+options = ["warn-proprietary-attributes: no"]
+dep_inputs = ["support/tidy.conf"]
 
 # lint the GitHub Actions workflow files with actionlint
 [processor.checker.iactionlint]
