@@ -10,7 +10,6 @@ src_files = [".rumdl.toml", "rsconstruct.toml"]
 [processor.checker.itidy.main]
 src_dirs = ["src"]
 config_file = "support/tidy.conf"
-dep_inputs = ["support/tidy.conf"]
 src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
 
 # These two use Angular Material's layout attributes (layout=, flex=), which
@@ -21,7 +20,6 @@ src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
 src_files = ["src/material/header.html", "src/material/toolbar.html"]
 config_file = "support/tidy.conf"
 options = ["warn-proprietary-attributes: no"]
-dep_inputs = ["support/tidy.conf"]
 
 # lint the GitHub Actions workflow files with actionlint
 [processor.checker.iactionlint]
