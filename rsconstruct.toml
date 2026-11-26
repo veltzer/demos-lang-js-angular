@@ -7,19 +7,11 @@ reject_dot_src_dirs = true
 [processor.checker.taplo]
 src_files = [".rumdl.toml", "rsconstruct.toml"]
 
-[processor.checker.itidy.main]
+# The material demos use Angular Material's elements (<md-button>, ...),
+# which are custom elements tidy only accepts with custom-tags.
+[processor.checker.itidy]
 src_dirs = ["src"]
-config_file = "support/tidy.conf"
-src_exclude_paths = ["src/material/header.html", "src/material/toolbar.html"]
-
-# These two use Angular Material's layout attributes (layout=, flex=), which
-# are framework markup tidy has no allowlist for, so they get their own
-# instance with only the proprietary-attribute warning turned off; every
-# other tidy check still applies to them.
-[processor.checker.itidy.material]
-src_files = ["src/material/header.html", "src/material/toolbar.html"]
-config_file = "support/tidy.conf"
-options = ["warn-proprietary-attributes: no"]
+options = ["custom-tags: blocklevel"]
 
 # lint the GitHub Actions workflow files with actionlint
 [processor.checker.iactionlint]
