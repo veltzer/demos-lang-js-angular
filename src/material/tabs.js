@@ -4,7 +4,7 @@
   angular
       .module('MyApp',['ngMaterial', 'ngMessages'])
       .controller('AppCtrl', AppCtrl)
-      .config(function($mdThemingProvider, $mdIconProvider){
+      .config(function($mdThemingProvider, $mdIconProvider){ // oxlint-disable-line no-unused-vars -- teaching: the commented-out theming code below is what uses them
 		/*
 		$mdThemingProvider.theme('default')
 			//.primaryPalette('white')
