@@ -13,6 +13,10 @@ src_files = [".rumdl.toml", "rsconstruct.toml"]
 src_dirs = ["src"]
 options = ["custom-tags: blocklevel"]
 
+# lint the Lua configuration with luacheck (policy: .luacheckrc)
+[processor.checker.iluacheck]
+src_dirs = ["config"]
+
 # lint the YAML files with yamllint (policy: .yamllint.yaml)
 [processor.checker.iyamllint]
 src_dirs = [".github"]
